@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVA RAID — retro space shooter for the Raspberry Pi Pico W</title>
+<meta name="description" content="A complete arcade space shooter running bare-metal on the Raspberry Pi Pico W and the 52Pi Pico Breadboard Kit Plus.">
+<meta property="og:title" content="NOVA RAID">
+<meta property="og:description" content="Retro arcade space shooter for the Raspberry Pi Pico W — dual-core C renderer, joystick, buzzer, WS2812, flash high scores.">
+<meta property="og:image" content="images/social-preview.png">
+<style>
+  :root {
+    --bg: #0a0c16; --panel: #141828; --line: #262b40;
+    --text: #e8e8f0; --dim: #9a9ab0; --cyan: #50dcff; --mag: #eb50ff; --yel: #ffdc50;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--text); font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  code, pre, .mono { font-family: ui-monospace, Menlo, Consolas, monospace; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 48px 0 8px; text-align: center; }
+  header img { max-width: 100%; border-radius: 10px; border: 1px solid var(--line); }
+  .tag { color: var(--dim); margin: 18px auto 0; max-width: 720px; }
+  .cta { margin: 26px 0 8px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 12px 22px; border-radius: 8px; font-weight: 600; border: 1px solid var(--cyan); }
+  .btn.primary { background: var(--cyan); color: #06121a; }
+  .btn.ghost { color: var(--cyan); }
+  section { padding: 44px 0 10px; }
+  h2 { font-size: 26px; margin-bottom: 6px; }
+  h2 span { color: var(--mag); }
+  .sub { color: var(--dim); margin-bottom: 24px; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  figure { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+  figure img { width: 100%; image-rendering: pixelated; border-radius: 6px; display: block; }
+  figcaption { color: var(--dim); font-size: 13px; padding: 8px 4px 2px; }
+  .cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  .card h3 { font-size: 16px; color: var(--cyan); margin-bottom: 6px; }
+  .card p { color: var(--dim); font-size: 14px; }
+  .diagram { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; margin-bottom: 14px; }
+  .diagram img { width: 100%; display: block; }
+  ol.steps { counter-reset: s; list-style: none; padding: 0; }
+  ol.steps li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px 14px 58px; margin-bottom: 10px; position: relative; }
+  ol.steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 16px; top: 12px;
+    width: 28px; height: 28px; border-radius: 50%; background: var(--cyan); color: #06121a; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; }
+  ol.steps code { color: var(--yel); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--cyan); }
+  td:first-child { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--yel); white-space: nowrap; }
+  footer { padding: 40px 0 60px; color: var(--dim); font-size: 14px; text-align: center; }
+  .note { border-left: 3px solid var(--mag); background: var(--panel); padding: 12px 16px; border-radius: 0 8px 8px 0; color: var(--dim); font-size: 14px; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <img src="images/banner.png" alt="NOVA RAID — pixel-art wordmark next to a framed gameplay capture">
+  <p class="tag">A complete retro arcade space shooter running <b>bare-metal</b> on the Raspberry&nbsp;Pi
+  Pico&nbsp;W and the 52Pi Pico Breadboard Kit Plus — dual-core C renderer, analog joystick,
+  buzzer soundtrack, WS2812 lighting, and high scores that survive the power switch.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://github.com/lla7wel/nova-raid/releases/latest">Download UF2</a>
+    <a class="btn ghost" href="https://github.com/lla7wel/nova-raid">Source on GitHub</a>
+  </div>
+</header>
+
+<section class="wrap" id="game">
+  <h2>The <span>game</span></h2>
+  <p class="sub">Escalating waves, four enemy behaviours, power-ups, nova bombs, combo scoring —
+  and the Void Dreadnought every fifth wave. Frames below are captured from the actual game code
+  by the repository's host harness.</p>
+  <div class="grid">
+    <figure><img src="images/01-splash.png" alt="Splash screen"><figcaption>Splash — starfield, wordmark, jingle</figcaption></figure>
+    <figure><img src="images/03-gameplay.png" alt="Gameplay"><figcaption>Wave combat with HUD: score, combo, wave, lives, bombs</figcaption></figure>
+    <figure><img src="images/05-boss-fight.png" alt="Boss fight"><figcaption>Void Dreadnought — three phases, health bar</figcaption></figure>
+    <figure><img src="images/06-pause.png" alt="Pause"><figcaption>Pause dialog over the dimmed battlefield</figcaption></figure>
+    <figure><img src="images/08-entry.png" alt="Initials entry"><figcaption>Callsign entry for the hall of fame</figcaption></figure>
+    <figure><img src="images/10-diagnostics.png" alt="Diagnostics"><figcaption>Built-in hardware diagnostics screen</figcaption></figure>
+  </div>
+</section>
+
+<section class="wrap" id="engineering">
+  <h2>The <span>engineering</span></h2>
+  <p class="sub">RP2040, 264 KiB of RAM, no GPU, no FPU — and a 480×320 panel behind a single SPI lane.</p>
+  <div class="cards">
+    <div class="card"><h3>Dual-core pipeline</h3><p>Core 0 simulates and renders a 240×160 framebuffer at a fixed timestep; core 1 pixel-doubles and streams it to the ST7796 with double-buffered DMA. The ~39 ms SPI transfer overlaps the next frame's simulation.</p></div>
+    <div class="card"><h3>Fixed-point everything</h3><p>24.8 fixed-point positions and velocities, table-driven sine motion. Soft-float would blow the frame budget on a Cortex-M0+.</p></div>
+    <div class="card"><h3>Safe flash persistence</h3><p>Top-5 scores in the last 4 KiB sector, written with the second core locked out and IRQs off, validated by magic number.</p></div>
+    <div class="card"><h3>Portable game core</h3><p>Gameplay code touches hardware only through a small HAL, so the identical sources build on a desktop for CI runs and pixel-true frame capture.</p></div>
+    <div class="card"><h3>Feedback engines</h3><p>Priority-based single-channel buzzer sequencer; WS2812 base modes with transient event overlays; panel LEDs for bomb-ready and low health.</p></div>
+    <div class="card"><h3>Everything documented</h3><p>Pin map, logical schematic, block diagram, architecture notes, troubleshooting, and a diagnostics mode for hardware bring-up.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="hardware">
+  <h2>The <span>hardware</span></h2>
+  <p class="sub">52Pi/GeeekPi Pico Breadboard Kit Plus (EP-0172) with a Raspberry Pi Pico W. No wiring — every peripheral is on the kit.</p>
+  <div class="diagram"><img src="diagrams/block-diagram.svg" alt="Hardware block diagram"></div>
+  <div class="diagram"><img src="diagrams/controls.svg" alt="Controls diagram"></div>
+  <table>
+    <tr><th>Pins</th><th>Peripheral</th></tr>
+    <tr><td>GP2/3/4/5/6/7</td><td>3.5" TFT 480×320, ST7796S, SPI0 @ 62.5 MHz</td></tr>
+    <tr><td>GP26 / GP27</td><td>Joystick X / Y (ADC)</td></tr>
+    <tr><td>GP15 / GP14</td><td>Fire / Nova bomb buttons (active low)</td></tr>
+    <tr><td>GP13</td><td>Piezo buzzer (PWM)</td></tr>
+    <tr><td>GP12</td><td>WS2812 RGB LED (PIO)</td></tr>
+    <tr><td>GP16 / GP17</td><td>Panel LEDs D1 / D2</td></tr>
+  </table>
+  <p class="note">Developed and validated against vendor documentation and the desktop harness;
+  not yet run on a physical EP-0172 by the author. Board-lot variations (rotation, joystick
+  orientation, display controller) are one-line settings in <code>src/config.h</code>, and the
+  built-in diagnostics screen shows exactly which to change.</p>
+</section>
+
+<section class="wrap" id="install">
+  <h2>Get it <span>running</span></h2>
+  <ol class="steps">
+    <li>Download <code>nova_raid.uf2</code> from the <a href="https://github.com/lla7wel/nova-raid/releases/latest">latest release</a>.</li>
+    <li>Hold the Pico's <code>BOOTSEL</code> button while plugging in the USB cable — a drive named <code>RPI-RP2</code> appears.</li>
+    <li>Drag the UF2 onto the drive. The board reboots straight into the splash screen.</li>
+    <li>Open <b>DIAGNOSTICS</b> from the menu for a two-minute hardware check, then start the mission.</li>
+  </ol>
+  <p class="sub" style="margin-top:12px">Building from source, all three OSes:
+  <a href="https://github.com/lla7wel/nova-raid/blob/main/docs/build-and-flash.md">build &amp; flash guide</a>.</p>
+</section>
+
+<footer class="wrap">
+  NOVA RAID · MIT License · original code, art and audio ·
+  <a href="https://github.com/lla7wel/nova-raid">github.com/lla7wel/nova-raid</a>
+</footer>
+
+</body>
+</html>

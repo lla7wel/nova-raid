@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" font-family="Menlo, Consolas, monospace">
+  <style>
+    .box { fill:#141828; stroke:#50dcff; stroke-width:1.5; rx:6; }
+    .periph { fill:#141828; stroke:#8a8aa0; stroke-width:1.2; }
+    .t { fill:#e8e8f0; font-size:14px; }
+    .s { fill:#9a9ab0; font-size:10px; }
+    .bus { stroke:#50dcff; stroke-width:2; fill:none; }
+    .sig { stroke:#8a8aa0; stroke-width:1.5; fill:none; }
+    .lbl { fill:#50dcff; font-size:11px; }
+    .dir { fill:#eb50ff; font-size:11px; }
+  </style>
+  <rect width="860" height="520" fill="#0a0c16"/>
+  <text x="430" y="30" text-anchor="middle" fill="#ffffff" font-size="18">NOVA RAID - Hardware Block Diagram</text>
+  <text x="430" y="48" text-anchor="middle" class="s">52Pi Pico Breadboard Kit Plus (EP-0172) + Raspberry Pi Pico W</text>
+
+  <!-- Pico -->
+  <rect x="330" y="180" width="200" height="180" rx="6" class="box"/>
+  <text x="430" y="205" text-anchor="middle" class="t">Raspberry Pi Pico W</text>
+  <text x="430" y="222" text-anchor="middle" class="s">RP2040 @ 125 MHz</text>
+  <text x="430" y="252" text-anchor="middle" class="s">core 0: game logic + render</text>
+  <text x="430" y="268" text-anchor="middle" class="s">core 1: SPI frame streaming</text>
+  <text x="430" y="290" text-anchor="middle" class="s">264 KiB SRAM (2x 75 KiB fb)</text>
+  <text x="430" y="306" text-anchor="middle" class="s">2 MiB flash</text>
+  <text x="430" y="322" text-anchor="middle" class="s">last 4 KiB sector: high scores</text>
+  <text x="430" y="344" text-anchor="middle" class="s">USB CDC: diagnostics log</text>
+
+  <!-- Display -->
+  <rect x="620" y="170" width="210" height="110" rx="4" class="periph"/>
+  <text x="725" y="195" text-anchor="middle" class="t">3.5" TFT 480x320</text>
+  <text x="725" y="212" text-anchor="middle" class="s">ST7796S controller</text>
+  <text x="725" y="228" text-anchor="middle" class="s">RGB565, landscape</text>
+  <text x="725" y="248" text-anchor="middle" class="s">FT6236 cap. touch on I2C0</text>
+  <text x="725" y="262" text-anchor="middle" class="s">(present, unused by game)</text>
+  <path class="bus" d="M530 225 L620 225"/>
+  <text x="575" y="215" text-anchor="middle" class="lbl">SPI0 62.5 MHz</text>
+  <text x="575" y="240" text-anchor="middle" class="s">GP2 SCK / GP3 MOSI</text>
+  <text x="575" y="254" text-anchor="middle" class="s">GP5 CS / GP6 DC / GP7 RST</text>
+  <path class="bus" d="M610 225 L620 220 L620 230 Z" fill="#50dcff"/>
+
+  <!-- Joystick -->
+  <rect x="30" y="120" width="200" height="70" rx="4" class="periph"/>
+  <text x="130" y="145" text-anchor="middle" class="t">Analog joystick</text>
+  <text x="130" y="162" text-anchor="middle" class="s">PSP-style, 2 pots</text>
+  <text x="130" y="178" text-anchor="middle" class="s">X: GP26/ADC0  Y: GP27/ADC1</text>
+  <path class="sig" d="M220 155 L330 210"/>
+  <text x="268" y="168" class="dir">analog in</text>
+
+  <!-- Buttons -->
+  <rect x="30" y="220" width="200" height="70" rx="4" class="periph"/>
+  <text x="130" y="245" text-anchor="middle" class="t">Push buttons x2</text>
+  <text x="130" y="262" text-anchor="middle" class="s">BTN1 fire: GP15</text>
+  <text x="130" y="278" text-anchor="middle" class="s">BTN2 bomb: GP14 (active low)</text>
+  <path class="sig" d="M220 255 L330 260"/>
+  <text x="268" y="248" class="dir">gpio in</text>
+
+  <!-- Touch (unused) -->
+  <rect x="40" y="320" width="180" height="60" rx="4" class="periph" stroke-dasharray="4 3"/>
+  <text x="130" y="345" text-anchor="middle" class="s">Cap. touch panel</text>
+  <text x="130" y="362" text-anchor="middle" class="s">I2C0 GP8 SDA / GP9 SCL</text>
+  <path class="sig" d="M220 345 L330 310" stroke-dasharray="4 3"/>
+
+  <!-- Buzzer -->
+  <rect x="620" y="320" width="210" height="56" rx="4" class="periph"/>
+  <text x="725" y="343" text-anchor="middle" class="t">Passive buzzer</text>
+  <text x="725" y="360" text-anchor="middle" class="s">GP13, PWM tone + duty volume</text>
+  <path class="sig" d="M530 320 L620 342"/>
+  <text x="568" y="330" class="dir">pwm out</text>
+
+  <!-- WS2812 -->
+  <rect x="620" y="400" width="210" height="56" rx="4" class="periph"/>
+  <text x="725" y="423" text-anchor="middle" class="t">RGB LED (WS2812)</text>
+  <text x="725" y="440" text-anchor="middle" class="s">GP12, PIO0 @ 800 kHz</text>
+  <path class="sig" d="M500 360 L620 424"/>
+  <text x="548" y="400" class="dir">pio out</text>
+
+  <!-- LEDs -->
+  <rect x="30" y="420" width="200" height="66" rx="4" class="periph"/>
+  <text x="130" y="443" text-anchor="middle" class="t">Panel LEDs</text>
+  <text x="130" y="460" text-anchor="middle" class="s">D1 GP16: bomb ready</text>
+  <text x="130" y="476" text-anchor="middle" class="s">D2 GP17: low-health blink</text>
+  <path class="sig" d="M220 450 L360 360"/>
+  <text x="272" y="418" class="dir">gpio out</text>
+
+  <!-- Power -->
+  <rect x="310" y="430" width="240" height="56" rx="4" class="periph"/>
+  <text x="430" y="453" text-anchor="middle" class="t">Power</text>
+  <text x="430" y="470" text-anchor="middle" class="s">USB 5V -> VSYS; 3V3 rail to kit</text>
+  <path class="sig" d="M430 430 L430 360"/>
+</svg>

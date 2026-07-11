@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="440" viewBox="0 0 860 440" font-family="Menlo, Consolas, monospace">
+  <style>
+    .t { fill:#e8e8f0; font-size:13px; }
+    .s { fill:#9a9ab0; font-size:11px; }
+    .c { fill:#50dcff; font-size:12px; }
+    .board { fill:#141828; stroke:#3a4048; stroke-width:2; }
+    .ln { stroke:#50dcff; stroke-width:1.3; fill:none; }
+  </style>
+  <rect width="860" height="440" fill="#0a0c16"/>
+  <text x="430" y="30" text-anchor="middle" fill="#ffffff" font-size="17">NOVA RAID - Controls</text>
+  <text x="430" y="48" text-anchor="middle" class="s">Board held landscape, USB cable to the right</text>
+
+  <!-- board outline -->
+  <rect x="230" y="80" width="460" height="300" rx="10" class="board"/>
+  <!-- screen -->
+  <rect x="330" y="100" width="340" height="230" rx="4" fill="#05060e" stroke="#50dcff"/>
+  <text x="500" y="220" text-anchor="middle" class="s">3.5" DISPLAY (480x320)</text>
+  <!-- pico -->
+  <rect x="590" y="340" width="80" height="28" rx="3" fill="#0e2a12" stroke="#3a6a3a"/>
+  <text x="630" y="358" text-anchor="middle" class="s" font-size="9">PICO W</text>
+  <line x1="670" y1="354" x2="700" y2="354" stroke="#8a8aa0" stroke-width="4"/>
+  <text x="712" y="358" class="s">USB</text>
+
+  <!-- joystick -->
+  <circle cx="285" cy="150" r="26" fill="#1c2030" stroke="#8a8aa0" stroke-width="2"/>
+  <circle cx="285" cy="150" r="12" fill="#2a3044" stroke="#c8c8d8"/>
+  <path class="ln" d="M285 110 L285 70 L120 70"/>
+  <text x="30" y="62" class="c">JOYSTICK</text>
+  <text x="30" y="76" class="s">move ship (8-way,</text>
+  <text x="30" y="89" class="s">analog speed)</text>
+  <text x="30" y="106" class="s">menus: navigate</text>
+  <text x="30" y="119" class="s">initials: pick letter</text>
+
+  <!-- buttons -->
+  <circle cx="270" cy="250" r="14" fill="#123" stroke="#50dcff" stroke-width="2"/>
+  <text x="270" y="255" text-anchor="middle" class="s" font-size="9">B1</text>
+  <circle cx="270" cy="310" r="14" fill="#231226" stroke="#eb50ff" stroke-width="2"/>
+  <text x="270" y="315" text-anchor="middle" class="s" font-size="9">B2</text>
+  <path class="ln" d="M256 250 L120 250"/>
+  <text x="30" y="236" class="c">BTN1 (GP15)</text>
+  <text x="30" y="252" class="s">fire / confirm</text>
+  <path class="ln" d="M256 310 L120 310" stroke="#eb50ff"/>
+  <text x="30" y="296" fill="#eb50ff" font-size="12">BTN2 (GP14)</text>
+  <text x="30" y="312" class="s">nova bomb / back</text>
+
+  <!-- both -->
+  <text x="30" y="356" fill="#ffdc50" font-size="12">BTN1 + BTN2</text>
+  <text x="30" y="372" class="s">pause / resume;</text>
+  <text x="30" y="385" class="s">hold 1s in diagnostics: exit</text>
+
+  <!-- rgb + buzzer + leds right -->
+  <circle cx="310" cy="105" r="6" fill="#40ff80"/>
+  <path class="ln" d="M310 99 L310 60 L740 60" stroke="#40ff80"/>
+  <text x="748" y="52" fill="#40ff80" font-size="12">RGB LED</text>
+  <text x="748" y="66" class="s">status +</text>
+  <text x="748" y="79" class="s">event flashes</text>
+
+  <rect x="640" y="90" width="14" height="14" rx="7" fill="#1c2030" stroke="#8a8aa0"/>
+  <path class="ln" d="M654 97 L740 97" stroke="#8a8aa0"/>
+  <text x="748" y="94" class="c">BUZZER</text>
+  <text x="748" y="108" class="s">sfx + jingles</text>
+
+  <rect x="620" y="120" width="8" height="5" fill="#ffdc50"/>
+  <rect x="632" y="120" width="8" height="5" fill="#ff9628"/>
+  <path class="ln" d="M640 122 L740 135" stroke="#ffdc50"/>
+  <text x="748" y="132" fill="#ffdc50" font-size="12">LED D1/D2</text>
+  <text x="748" y="146" class="s">D1: bomb ready</text>
+  <text x="748" y="159" class="s">D2: low health</text>
+
+  <!-- in-game table -->
+  <text x="230" y="410" class="s">IN GAME: stick = thrust vector | B1 = laser (hold for auto) | B2 = nova bomb | both = pause</text>
+  <text x="230" y="426" class="s">PAUSED: B1 resume, B2 quit | GAME OVER: B1 continue | SPLASH/SCORES: any button</text>
+</svg>
