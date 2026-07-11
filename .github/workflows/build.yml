@@ -1,5 +1,8 @@
 name: build
 
+permissions:
+  contents: write   # release-asset upload on tag builds
+
 on:
   push:
     branches: [main]
