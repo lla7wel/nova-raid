@@ -1,0 +1,35 @@
+name: Bug report
+description: Something is broken in the game or the build
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Gameplay / game logic
+        - Display (blank, garbled, rotated)
+        - Input (joystick, buttons)
+        - Sound / LEDs
+        - High-score persistence
+        - Build / flashing
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: hw
+    attributes:
+      label: Hardware
+      description: Board revision, Pico model, where you bought the kit. For display/input issues please include the Diagnostics screen readings (a photo is perfect).
+      placeholder: EP-0172 Plus, Pico W, diagnostics shows ...
+  - type: textarea
+    id: build
+    attributes:
+      label: Firmware version / build
+      placeholder: v1.0.0 release UF2, or commit + toolchain if self-built

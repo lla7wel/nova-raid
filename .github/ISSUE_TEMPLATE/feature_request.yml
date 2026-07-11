@@ -1,0 +1,15 @@
+name: Feature request
+description: Propose a gameplay or engineering improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+    validations:
+      required: true
+  - type: textarea
+    id: fit
+    attributes:
+      label: Why it fits
+      description: Keep the hardware budget in mind — 25 fps display cap, one buzzer channel, ~100 KiB free SRAM.
