@@ -10,6 +10,12 @@ joystick (silk "Joystick", "ADC0"/"ADC1"), an "RGB Led" position, two blue
 push buttons ("Button"), a piezo buzzer, and a 4-LED block (D1–D4 with
 "GP16 / GP17 / 3V3 / 5V" markings).
 
+Owner-supplied runtime photos show the firmware on the same EP-0172 kit:
+
+| Splash | Gameplay | Diagnostics |
+|---|---|---|
+| <img src="images/hardware-splash.jpg" alt="NOVA RAID splash screen running on the EP-0172 kit" width="220"> | <img src="images/hardware-gameplay.jpg" alt="NOVA RAID gameplay running on the EP-0172 kit" width="220"> | <img src="images/hardware-diagnostics.jpg" alt="NOVA RAID diagnostics screen running on the EP-0172 kit" width="220"> |
+
 That combination matches the **52Pi / GeeekPi Pico Breadboard Kit Plus**,
 product id **EP-0172** ("Plus version" on the silk), documented at the
 [52Pi wiki](https://wiki.52pi.com/index.php?title=EP-0172) with demo firmware

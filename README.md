@@ -32,13 +32,25 @@
 |---|---|---|
 | ![Boss warning](docs/images/04-boss-warning.png) | ![Boss fight](docs/images/05-boss-fight.png) | ![Pause](docs/images/06-pause.png) |
 
-| Game over | Initials entry | Diagnostics |
-|---|---|---|
-| ![Game over](docs/images/07-gameover.png) | ![Initials](docs/images/08-entry.png) | ![Diagnostics](docs/images/10-diagnostics.png) |
+| Game over | Initials entry | Hall of fame | Diagnostics |
+|---|---|---|---|
+| ![Game over](docs/images/07-gameover.png) | ![Initials](docs/images/08-entry.png) | ![Hall of fame](docs/images/09-hiscores.png) | ![Diagnostics](docs/images/10-diagnostics.png) |
 
 > These are real frames rendered by the game code itself, captured through the
 > repository's [host harness](tools/host) (`tools/host/capture`), shown at the
 > 2× scale the panel displays. They are not photographs of the running board.
+
+## Hardware photos
+
+Owner-supplied photos of NOVA RAID running on the EP-0172 kit:
+
+| Splash | Menu | Gameplay |
+|---|---|---|
+| <img src="docs/images/hardware-splash.jpg" alt="NOVA RAID splash screen running on the EP-0172 kit" width="220"> | <img src="docs/images/hardware-menu.jpg" alt="NOVA RAID main menu running on the EP-0172 kit" width="220"> | <img src="docs/images/hardware-gameplay.jpg" alt="NOVA RAID gameplay running on the EP-0172 kit" width="220"> |
+
+| Hall of fame | Diagnostics |
+|---|---|
+| <img src="docs/images/hardware-hall-of-fame.jpg" alt="NOVA RAID hall of fame running on the EP-0172 kit" width="220"> | <img src="docs/images/hardware-diagnostics.jpg" alt="NOVA RAID diagnostics screen running on the EP-0172 kit" width="220"> |
 
 ## Gameplay
 
@@ -185,7 +197,7 @@ ninja -C nova-raid/build          # produces build/nova_raid.uf2
 │   ├── build-and-flash.md
 │   ├── troubleshooting.md
 │   ├── diagrams/         editable SVG sources for all diagrams
-│   └── images/           captured frames, banner
+│   └── images/           captured frames, hardware photos, banner
 └── .github/workflows/    CI: firmware build + host-harness run on every push
 ```
 

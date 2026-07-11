@@ -33,6 +33,7 @@
   .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   figure { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
   figure img { width: 100%; image-rendering: pixelated; border-radius: 6px; display: block; }
+  figure.photo img { image-rendering: auto; }
   figcaption { color: var(--dim); font-size: 13px; padding: 8px 4px 2px; }
   .cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
@@ -78,7 +79,20 @@
     <figure><img src="images/05-boss-fight.png" alt="Boss fight"><figcaption>Void Dreadnought — three phases, health bar</figcaption></figure>
     <figure><img src="images/06-pause.png" alt="Pause"><figcaption>Pause dialog over the dimmed battlefield</figcaption></figure>
     <figure><img src="images/08-entry.png" alt="Initials entry"><figcaption>Callsign entry for the hall of fame</figcaption></figure>
+    <figure><img src="images/09-hiscores.png" alt="Hall of fame"><figcaption>Persistent top-5 hall of fame</figcaption></figure>
     <figure><img src="images/10-diagnostics.png" alt="Diagnostics"><figcaption>Built-in hardware diagnostics screen</figcaption></figure>
+  </div>
+</section>
+
+<section class="wrap" id="hardware-photos">
+  <h2>On <span>hardware</span></h2>
+  <p class="sub">Owner-supplied photos of NOVA RAID running on the EP-0172 kit.</p>
+  <div class="grid">
+    <figure class="photo"><img src="images/hardware-splash.jpg" alt="NOVA RAID splash screen running on the EP-0172 kit"><figcaption>Splash screen on the 3.5&quot; TFT</figcaption></figure>
+    <figure class="photo"><img src="images/hardware-menu.jpg" alt="NOVA RAID main menu running on the EP-0172 kit"><figcaption>Main menu on the physical controls board</figcaption></figure>
+    <figure class="photo"><img src="images/hardware-gameplay.jpg" alt="NOVA RAID gameplay running on the EP-0172 kit"><figcaption>Wave combat running on the kit</figcaption></figure>
+    <figure class="photo"><img src="images/hardware-hall-of-fame.jpg" alt="NOVA RAID hall of fame running on the EP-0172 kit"><figcaption>Hall of fame screen on device</figcaption></figure>
+    <figure class="photo"><img src="images/hardware-diagnostics.jpg" alt="NOVA RAID diagnostics screen running on the EP-0172 kit"><figcaption>Diagnostics with ADC, buttons, LEDs and colour bars</figcaption></figure>
   </div>
 </section>
 

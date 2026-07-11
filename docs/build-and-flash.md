@@ -81,6 +81,16 @@ python3 tools/gen_banner.py      # rewrites docs/images/banner.png (needs Pillow
    beat a default score) and hall of fame should all work.
 5. Power-cycle: your score survives in the hall of fame.
 
+Owner-supplied photos of the expected on-device screens:
+
+| Splash | Menu | Gameplay |
+|---|---|---|
+| <img src="images/hardware-splash.jpg" alt="NOVA RAID splash screen on the EP-0172 kit" width="220"> | <img src="images/hardware-menu.jpg" alt="NOVA RAID main menu on the EP-0172 kit" width="220"> | <img src="images/hardware-gameplay.jpg" alt="NOVA RAID gameplay on the EP-0172 kit" width="220"> |
+
+| Hall of fame | Diagnostics |
+|---|---|
+| <img src="images/hardware-hall-of-fame.jpg" alt="NOVA RAID hall of fame on the EP-0172 kit" width="220"> | <img src="images/hardware-diagnostics.jpg" alt="NOVA RAID diagnostics screen on the EP-0172 kit" width="220"> |
+
 The firmware also logs a boot line over USB CDC (any serial terminal,
 115200 8N1) for confirming it is alive with the display disconnected.
 
