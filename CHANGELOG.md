@@ -4,6 +4,20 @@ All notable changes to NOVA RAID are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-07-10
+
+First on-hardware run (owner's EP-0172, photos in `docs/images/hardware-*`).
+
+### Fixed
+- Display rendered a colour negative: the kit's panel runs in inverted mode,
+  so the ST7796 init now sends INVON (0x21), matching the vendor demo.
+
+### Changed
+- Documented the verified orientation (upright with the USB cable on the
+  left) in `config.h`, the controls diagram, and the hardware doc.
+- Validation table updated: display init, gameplay, joystick, buttons, RGB
+  LED and panel LEDs confirmed working on the physical board.
+
 ## [1.0.0] - 2026-07-10
 
 Initial release.

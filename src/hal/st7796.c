@@ -104,6 +104,10 @@ void st7796_init(void) {
     cmd_n(0xF0, (const uint8_t[]){0x69}, 1);
     sleep_ms(120);
 
+    // The kit's panel runs in inverted mode: without INVON everything
+    // displays as a colour negative (verified on hardware; the vendor
+    // demo sends the same command).
+    cmd(0x21);
     cmd(0x29);            // display on
     cs(false);
 

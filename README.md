@@ -52,6 +52,11 @@ Owner-supplied photos of NOVA RAID running on the EP-0172 kit:
 |---|---|
 | <img src="docs/images/hardware-hall-of-fame.jpg" alt="NOVA RAID hall of fame running on the EP-0172 kit" width="220"> | <img src="docs/images/hardware-diagnostics.jpg" alt="NOVA RAID diagnostics screen running on the EP-0172 kit" width="220"> |
 
+> The photos show **v1.0.0**, whose colours render as a negative (white
+> background) — that first on-hardware run identified the panel's inverted
+> mode, fixed in v1.0.1 with the ST7796 INVON command. Everything else in the
+> photos (layout, orientation, inputs, LEDs) matches the intended output.
+
 ## Gameplay
 
 You pilot the last interceptor of the outer colonies against the Void armada.
@@ -209,11 +214,11 @@ splash → menu → waves → boss → pause → death → initials → hall of 
 diagnostics) on every push. Details and the honest scope of what was and
 wasn't physically verified: [docs/build-and-flash.md](docs/build-and-flash.md#validation).
 
-**Physical-hardware note:** this firmware was developed and validated against
-documentation, the vendor demo sources, and the host harness — it has not been
-run on a physical EP-0172 by the author. The diagnostics screen exists to make
-on-device verification a two-minute job; if anything is off, it is expected to
-be one of the flagged one-line settings in `src/config.h`.
+**Physical-hardware note:** developed against documentation and the host
+harness, then verified on a real EP-0172 by the project owner (photos above):
+display, gameplay, joystick, buttons, RGB LED and panel LEDs all confirmed
+working. The first on-device run caught exactly one defect — the panel runs
+in inverted-colour mode — fixed in v1.0.1 by sending INVON during init.
 
 ## Known limitations
 

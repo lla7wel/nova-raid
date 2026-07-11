@@ -1,7 +1,7 @@
 #ifndef NOVA_CONFIG_H
 #define NOVA_CONFIG_H
 
-#define NOVA_VERSION "1.0.0"
+#define NOVA_VERSION "1.0.1"
 
 // Hardware configuration for the 52Pi / GeeekPi Pico Breadboard Kit Plus
 // (EP-0172). Every pin below matches the kit's silk screen and the 52Pi
@@ -22,9 +22,11 @@
 // demo drives it at 60 MHz). Lower it if you see a corrupted image.
 #define LCD_BAUD_HZ        (62500u * 1000u)
 
-// Panel rotation, 0..3. 1 and 3 are landscape (480x320). Default 1 puts
-// the joystick on the left when the USB port faces right. If your picture
-// is upside down, set 3. Verify with Diagnostics -> display test arrows.
+// Panel rotation, 0..3. 1 and 3 are landscape (480x320). Default 1 is
+// upright when the board is held with the USB cable on the LEFT (Pico
+// strip left, joystick and buttons along the bottom) — verified on
+// hardware. Prefer USB on the right? Set 3. The diagnostics arrow must
+// point at the physical top edge.
 #define LCD_ROTATION       1
 
 // Capacitive touch (I2C0, GP8/GP9) is present on the kit but intentionally

@@ -25,7 +25,7 @@ at [geeekpi/pico_breadboard_kit](https://github.com/geeekpi/pico_breadboard_kit)
 |---|---|---|
 | Expansion board | 52Pi Pico Breadboard Kit Plus (EP-0172) | High — silk screen + component layout match |
 | MCU board | Raspberry Pi Pico W (RP2040, 2 MB flash, CYW43439 radio unused) | Confirmed from photo silk screen |
-| Display | 3.5" 480×320 TFT, **ST7796S** (marketed as ST7796SU1), SPI | High — vendor wiki & demo code; *controller may vary by production lot* |
+| Display | 3.5" 480×320 TFT, **ST7796S** (marketed as ST7796SU1), SPI | Confirmed — the ST7796 init sequence runs the panel (owner photos); the panel is an inverted-mode lot (INVON required, sent since v1.0.1) |
 | Touch | Capacitive, I²C (FT6236-class) | Vendor docs; unused by this project |
 | Joystick | 2-axis analog (2 potentiometers) | Confirmed by "ADC0/ADC1" silk |
 | Buttons | 2 momentary, active-low | Vendor docs |
@@ -83,15 +83,17 @@ The SVGs are the editable sources (plain, hand-written SVG).
 
 ## Configurable assumptions
 
-These could not be physically verified from the photograph alone and may vary
-between board lots. Each is one line in [`src/config.h`](../src/config.h),
-and the **Diagnostics** screen (main menu → DIAGNOSTICS) shows exactly which
-one to change:
+The defaults below were verified on the owner's board (runtime photos above:
+diagnostics arrow up, stick tracking, buttons registering). They remain
+configurable because board lots vary; each is one line in
+[`src/config.h`](../src/config.h), and the **Diagnostics** screen (main menu
+→ DIAGNOSTICS) shows exactly which one to change:
 
-| Assumption | Default | If wrong | Config |
+| Setting | Default (verified on owner's board) | If wrong on your lot | Config |
 |---|---|---|---|
-| Panel rotation | landscape, joystick left (`LCD_ROTATION 1`) | picture upside down → set `3`; arrow in diagnostics must point up | `LCD_ROTATION` |
-| Display controller | ST7796S | blank/garbled screen on some lots (ILI9488 variants need a different init + 18-bit colour; see [troubleshooting](troubleshooting.md)) | `st7796.c` init table |
+| Panel rotation | `LCD_ROTATION 1` — upright with the USB cable on the left | picture upside down → set `3`; arrow in diagnostics must point up | `LCD_ROTATION` |
+| Display inversion | INVON sent (panel is an inverted-mode lot) | colour-negative image → remove `cmd(0x21)` | `st7796.c` |
+| Display controller | ST7796S init | blank/garbled screen (ILI9488 variants need a different init + 18-bit colour; see [troubleshooting](troubleshooting.md)) | `st7796.c` init table |
 | Joystick X direction | right = increase | ship moves opposite to stick | `JOY_INVERT_X` |
 | Joystick Y direction | inverted (`JOY_INVERT_Y 1`) | up/down swapped | `JOY_INVERT_Y` |
 | Axis assignment | X=ADC0, Y=ADC1 | diagonal confusion | `JOY_SWAP_AXES` |

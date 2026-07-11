@@ -8,7 +8,7 @@
   </style>
   <rect width="860" height="440" fill="#0a0c16"/>
   <text x="430" y="30" text-anchor="middle" fill="#ffffff" font-size="17">NOVA RAID - Controls</text>
-  <text x="430" y="48" text-anchor="middle" class="s">Board held landscape, USB cable to the right</text>
+  <text x="430" y="48" text-anchor="middle" class="s">Board held landscape, USB cable to the left (verified on hardware)</text>
 
   <!-- board outline -->
   <rect x="230" y="80" width="460" height="300" rx="10" class="board"/>
@@ -16,10 +16,10 @@
   <rect x="330" y="100" width="340" height="230" rx="4" fill="#05060e" stroke="#50dcff"/>
   <text x="500" y="220" text-anchor="middle" class="s">3.5" DISPLAY (480x320)</text>
   <!-- pico -->
-  <rect x="590" y="340" width="80" height="28" rx="3" fill="#0e2a12" stroke="#3a6a3a"/>
-  <text x="630" y="358" text-anchor="middle" class="s" font-size="9">PICO W</text>
-  <line x1="670" y1="354" x2="700" y2="354" stroke="#8a8aa0" stroke-width="4"/>
-  <text x="712" y="358" class="s">USB</text>
+  <rect x="245" y="340" width="80" height="28" rx="3" fill="#0e2a12" stroke="#3a6a3a"/>
+  <text x="285" y="358" text-anchor="middle" class="s" font-size="9">PICO W</text>
+  <line x1="215" y1="354" x2="245" y2="354" stroke="#8a8aa0" stroke-width="4"/>
+  <text x="180" y="358" class="s">USB</text>
 
   <!-- joystick -->
   <circle cx="285" cy="150" r="26" fill="#1c2030" stroke="#8a8aa0" stroke-width="2"/>

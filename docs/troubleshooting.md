@@ -25,9 +25,10 @@ The **DIAGNOSTICS** screen (main menu → third item) is the main tool here.
 
 - Lower the SPI clock: in `src/config.h` set `LCD_BAUD_HZ` to `(31250*1000)`
   and rebuild. Some panels/lots don't tolerate 62.5 MHz.
-- Colours inverted or tinted: production lots vary. Try commenting the
-  inversion command in `st7796.c` (`cmd_n(0xB4, ...)`) or adding `cmd(0x21)`
-  (INVON) after `cmd(0x29)`.
+- Colours inverted (white background, negative palette): the firmware sends
+  INVON (`cmd(0x21)` in `st7796.c`) because the kit's panel runs in inverted
+  mode — v1.0.0 lacked it and showed exactly this. If a future lot shows a
+  negative image *with* current firmware, remove that line instead.
 - Completely wrong image geometry (stripes, quarter screen): the lot may use
   an ILI9488 instead of the ST7796. ILI9488 needs a different init table and
   **18-bit colour over SPI** — open an issue with a photo; the driver is

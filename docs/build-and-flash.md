@@ -107,13 +107,7 @@ What is verified automatically and what was verified for the v1.0.0 release:
 | Screenshots reflect real rendering | captured from the harness, not mocked up | ✅ |
 | RAM budget | `arm-none-eabi-size`: ~165 KiB static of 264 KiB | ✅ |
 | Pin map matches vendor documentation | cross-checked against 52Pi wiki EP-0172 + GeeekPi demo sources | ✅ |
-| Runs on physical EP-0172 | **not performed** — no board access during development | ⚠️ see below |
-
-Physical checks that remain for the first person with the board in hand
-(expected result, and the fallback if it fails):
-
-- Panel initialises with the ST7796 sequence → else the lot uses another
-  controller ([troubleshooting](troubleshooting.md#display-blank-or-garbled)).
-- Rotation/joystick orientation match the defaults → else flip the
-  documented `config.h` flags.
-- SPI stable at 62.5 MHz → else halve `LCD_BAUD_HZ`.
+| Runs on physical EP-0172 | owner-run v1.0.0, photos above: display init, SPI @ 62.5 MHz, gameplay, diagnostics, joystick ADC centred, buttons, RGB LED, panel LEDs all working | ✅ |
+| Display colours correct | v1.0.0 showed a colour-negative image — the panel needs INVON; **fixed in v1.0.1** (matches the vendor demo init) | ✅ v1.0.1 |
+| Rotation / joystick orientation | correct for the USB-cable-left hold (diagnostics arrow up, stick tracks) | ✅ |
+| Audio audible on the physical buzzer | not yet reported | ⚠️ untested |
