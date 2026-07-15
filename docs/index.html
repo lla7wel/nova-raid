@@ -123,10 +123,12 @@
     <tr><td>GP12</td><td>WS2812 RGB LED (PIO)</td></tr>
     <tr><td>GP16 / GP17</td><td>Panel LEDs D1 / D2</td></tr>
   </table>
-  <p class="note">Developed and validated against vendor documentation and the desktop harness;
-  not yet run on a physical EP-0172 by the author. Board-lot variations (rotation, joystick
-  orientation, display controller) are one-line settings in <code>src/config.h</code>, and the
-  built-in diagnostics screen shows exactly which to change.</p>
+  <p class="note">Verified on the author's physical EP-0172: display init and SPI at 62.5&nbsp;MHz,
+  gameplay, joystick, buttons, RGB LED and panel LEDs all confirmed working (hardware photos in the
+  repository). The first on-hardware run exposed one defect — the panel displayed a colour negative —
+  fixed in v1.0.1 by sending <code>INVON</code> during init, as documented in the release notes.
+  Board-lot variations (rotation, joystick orientation, display controller) remain one-line settings
+  in <code>src/config.h</code>, and the built-in diagnostics screen shows exactly which to change.</p>
 </section>
 
 <section class="wrap" id="install">
