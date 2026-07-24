@@ -5,6 +5,10 @@
 <h1 align="center">NOVA RAID</h1>
 
 <p align="center">
+  <a href="https://github.com/lla7wel/nova-raid/actions/workflows/build.yml"><img src="https://github.com/lla7wel/nova-raid/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
+</p>
+
+<p align="center">
   A complete retro arcade space shooter for the <b>Raspberry Pi Pico W</b> on the
   <b>52Pi Pico Breadboard Kit Plus (EP-0172)</b> — bare-metal C, dual-core renderer,
   analog joystick control, buzzer sound, WS2812 light feedback, and flash-persistent
@@ -17,7 +21,8 @@
   <a href="#hardware">Hardware</a> ·
   <a href="#building-from-source">Building</a> ·
   <a href="docs/architecture.md">Architecture</a> ·
-  <a href="docs/troubleshooting.md">Troubleshooting</a>
+  <a href="docs/troubleshooting.md">Troubleshooting</a> ·
+  <a href="https://www.mohamedelbahlool.com/en/work/nova-raid/">Portfolio case study</a>
 </p>
 
 ---
